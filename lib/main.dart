@@ -1,16 +1,43 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const DemoApp());
+  runApp(const MyApp());
 }
 
-class DemoApp extends StatefulWidget {
-  const DemoApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
-  State<DemoApp> createState() => _DemoAppState();
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "MyApp",
+      home: Text('Home'),
+    );
+  }
 }
 
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home'),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Profile(),
+                  ),
+                );
 class _DemoAppState extends State<DemoApp> {
   List<String> friendList = [
     'Iram',
@@ -63,7 +90,6 @@ class Home extends StatelessWidget {
           title: const Text(
             'Home',
             style: TextStyle(color: Colors.white),
-=======
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
@@ -357,84 +383,72 @@ class Home extends StatelessWidget {
               },
               onLongPress: () {
                 print('On LongPress $index');
-              },
-              tileColor: Colors.grey,
-            );
-          },
-        ),*/ /*
-        body: Center(
-          child: GridView(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, mainAxisSpacing: 12, crossAxisSpacing: 8),
-            children: [
-              Text('Iram'),
-              Text('Sabbir'),
-              Text('Rakib'),
-              Text('Hasan'),
-              Text('Hasan'),
-              Text('Hasan'),
-              Text('Hasan'),
-              Text('Hasan'),
-              Text('Hasan'),
-            ],*/
-        /*body: GridView.builder(
-          gridDelegate:
-              const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
-          itemCount: friendList.length,
-          itemBuilder: (context, index) {
-            return Center(
-              child: Text(friendList[index]),
-            );
-          },
-        ),*/
-        body: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              TextFormField(
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  controller: _emailTEController,
-                  decoration: const InputDecoration(
-                    hintText: 'Email',
-                  ),
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Enter Email Address';
-                    }
-                    return null;
-                  }),
-              TextFormField(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator:(String? value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Enter Password';
-                  }
-                  return null;
-                } ,
-                controller: _passswordTEController,
-                decoration: const InputDecoration(
-                  hintText: 'Password',
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  /*String email = _emailTEController.text;
-                  String password = _passswordTEController.text;
 
-                  if (email.isNotEmpty && password.isNotEmpty) {
-                    print('Login Success');
-                  } else {
-                    print('Login Failed. Missing Data');
-                  }*/
-                  if (_formKey.currentState!.validate()) {
-                    print('Login Success');
-                  }
-                },
-                child: const Text('Tap'),
-              )
-            ],
-          ),
+              },
+              child: const Text('Go to Profile'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Profile(),
+                  ),
+                );
+              },
+              child: const Text('Go to Settings'),
+            ),
+          ],
         ),
+      ),
+    );
+  }
+}
+
+class Profile extends StatelessWidget {
+  const Profile({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile'),
+      ),
+      body: Column(
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text('Back to Home'),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class Settings extends StatelessWidget {
+  const Settings({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Settings'),
+      ),
+      body: Column(
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Home()),
+                      (predicate) => false);
+            },
+            child: const Text('Back to Home'),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(onPressed: () {
 
