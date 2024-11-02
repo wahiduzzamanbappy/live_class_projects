@@ -13,20 +13,53 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
         appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.amber,
+          backgroundColor: Colors.blue,
         ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.green,
+            foregroundColor: Colors.white,
+          ),
+        ),
+        inputDecorationTheme: const InputDecorationTheme(
+          border: OutlineInputBorder(
+              borderSide: BorderSide(
+            color: Colors.orange,
+          )),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.orange),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.orange),
+          ),
+        ),
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.amber, foregroundColor: Colors.black),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.red,
             foregroundColor: Colors.white,
           ),
         ),
-        inputDecorationTheme: const InputDecorationTheme(),
+        inputDecorationTheme: const InputDecorationTheme(
+          border: OutlineInputBorder(
+              borderSide: BorderSide(
+            color: Colors.pinkAccent,
+          )),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.pinkAccent),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.pinkAccent),
+          ),
+        ),
       ),
       home: const MyHomePage(),
+      themeMode: ThemeMode.system,
     );
   }
 }
@@ -46,6 +79,29 @@ class MyHomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const TextField(
+              textDirection: TextDirection.ltr,
+
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            const TextField(),
+            const SizedBox(
+              height: 8,
+            ),
+            const TextField(),
+            const SizedBox(
+              height: 8,
+            ),
+            const TextField(),
+            const SizedBox(
+              height: 8,
+            ),
+            const TextField(),
+            const SizedBox(
+              height: 8,
+            ),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -103,15 +159,36 @@ class Settings extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Settings'),
       ),
-      body: Column(
-        children: [
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('Home'),
-          ),
-        ],
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const MyHomePage(),
+                    ),
+                    (predicate) => false);
+              },
+              child: const Text('Home'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Profile(),
+                  ),
+                );
+              },
+              child: const Text('Profile'),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
-
