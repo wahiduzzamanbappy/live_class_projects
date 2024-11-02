@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -192,3 +192,9 @@ class Settings extends StatelessWidget {
     );
   }
 }
+      title: "MyApp",
+      home: HomeScreen(),
+    );
+  }
+}
+
