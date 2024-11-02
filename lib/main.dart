@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 
-// Image(asset, network), Column, Row
+// Drawer, NavigationBar, Bottom Navigation bar, SingleChildScrollView, ScrollBar, ListView, ListViewBuilder
 
 void main() {
   runApp(HelloWorldApp());
@@ -13,97 +12,196 @@ class HelloWorldApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: true,
       title: 'Hello World App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Home'),
-          centerTitle: true,
+      home: Home(),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  Home({super.key});
+
+  List<String> friendList = [
+    'Iram',
+    'Shabbin',
+    'Rakib',
+    'Hasan',
+    'Roy',
+    'Niloy',
+    'Niloy',
+    'Niloy',
+    'Niloy',
+    'Niloy',
+    'Niloy',
+    'Niloy',
+    'Niloy',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home'),
+        backgroundColor: Colors.green,
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.edit)),
+          // IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
+        ],
+        // leading: Icon(Icons.add),
+      ),
+      drawer: const Drawer(
+        shadowColor: Colors.red,
+        backgroundColor: Colors.white54,
+        width: 300,
+        child: Column(
+          children: [Text('dfsdf')],
         ),
-        // body: Image.asset(
-        //   'assets/images/shoe.jpg',
-        //   width: 300,
-        //   height: 400,
-        //   fit: BoxFit.scaleDown,
-        //   // color: Colors.red.shade50,
-        //   alignment: Alignment.bottomCenter,
-        // ),
-        // body: Image.network(
-        //   'https://t3.ftcdn.net/jpg/06/12/00/18/360_F_612001823_TkzT0xmIgagoDCyQ0yuJYEGu8j6VNVYT.jpg',
-        //   width: 200,
-        //   height: 300,
-        //   fit: BoxFit.cover,
-        // ),
-        /*body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisSize: MainAxisSize.min,
+      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   currentIndex: 0,
+      //   selectedItemColor: Colors.pink,
+      //   unselectedItemColor: Colors.blue,
+      //   unselectedFontSize: 12,
+      //   showUnselectedLabels: false,
+      //   showSelectedLabels: true,
+      //   onTap: (int selectedIndex) {
+      //     // TODO: have to change state, will see after stateful widget
+      //   },
+      //   items: [
+      //     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+      //     BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+      //   ],
+      // ),
+      bottomNavigationBar: NavigationBar(
+          selectedIndex: 1,
+          onDestinationSelected: (int selectedIndex) {
+            // TODO: have to change state, will see after stateful widget
+          },
+          destinations: [
+            const NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+            const NavigationDestination(icon: Icon(Icons.search), label: 'Search'),
+          ]),
+      /*body: Scrollbar(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+              Text('sdfdsfd'),
+            ],
+          ),
+        ),
+      ),*/
+      body: Scrollbar(
+        thickness: 10,
+        radius: const Radius.circular(10),
+        interactive: true,
+        /* child: ListView(
+          scrollDirection: Axis.vertical,
+          reverse: false,
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           children: [
-            Text('Hello'),
-            Text('World'),
-            Image.network(
-              'https://t3.ftcdn.net/jpg/06/12/00/18/360_F_612001823_TkzT0xmIgagoDCyQ0yuJYEGu8j6VNVYT.jpg',
-              width: 350,
-              height: 300,
-              fit: BoxFit.cover,
-            ),
-            Text('This is a shoe image'),
-            Text('sjfdkk'),
+            Text('first'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('last'),
           ],
         ),*/
-        /*body: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text('Hello'),
-            Text('Another'),
-            Text('World'),
-            Image.network(
-              'https://t3.ftcdn.net/jpg/06/12/00/18/360_F_612001823_TkzT0xmIgagoDCyQ0yuJYEGu8j6VNVYT.jpg',
-              width: 100,
-              fit: BoxFit.cover,
-            ),
-            Text('Shoe')
-          ],
+        /* child: ListView.builder(
+          itemCount: 100, // 100-1 = 99 => 0 -> 99
+          padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          itemBuilder: (context, index) {
+            return Text('item $index');
+          },
         ),*/
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('Hello world'),
-            Row(
-              children: [
-                const Text('Hello'),
-                const Text('World'),
-                Image.network(
-                  'https://t3.ftcdn.net/jpg/06/12/00/18/360_F_612001823_TkzT0xmIgagoDCyQ0yuJYEGu8j6VNVYT.jpg',
-                  width: 100,
-                  fit: BoxFit.cover,
-                ),
-                const Text('This is a shoe image'),
-                const Text('sjfdkk'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Image.network(
-                  'https://t3.ftcdn.net/jpg/06/12/00/18/360_F_612001823_TkzT0xmIgagoDCyQ0yuJYEGu8j6VNVYT.jpg',
-                  width: 100,
-                  fit: BoxFit.cover,
-                ),
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text('This'),
-                    Text('is'),
-                    Text('Nike new version'),
-                  ],
-                )
-              ],
-            )
-          ],
+        child: ListView.builder(
+          itemCount: friendList.length, // 5 (0-4)
+          itemBuilder: (BuildContext context, int index) {
+            return Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(friendList[index]),
+            );
+          },
         ),
       ),
     );
   }
 }
+
+// Suggestion => ctl + space
