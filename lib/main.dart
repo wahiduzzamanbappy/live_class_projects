@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(DemoApp());
+  runApp(const DemoApp());
 }
 
-class DemoApp extends StatelessWidget {
-  DemoApp({super.key});
+class DemoApp extends StatefulWidget {
+  const DemoApp({super.key});
 
+  @override
+  State<DemoApp> createState() => _DemoAppState();
+}
+
+class _DemoAppState extends State<DemoApp> {
   List<String> friendList = [
     'Iram',
     'Sabbir',
@@ -25,9 +30,11 @@ class DemoApp extends StatelessWidget {
     'Saiful',
   ];
 
-  TextEditingController _emailTEController = TextEditingController();
-  TextEditingController _passswordTEController = TextEditingController();
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailTEController = TextEditingController();
+
+  final TextEditingController _passswordTEController = TextEditingController();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
