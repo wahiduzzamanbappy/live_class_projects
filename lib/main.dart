@@ -1,117 +1,48 @@
 import 'package:flutter/material.dart';
 
+// reformat
+// ctl + shift + l // cmd + shift + l
+
+// suggestion
+// ctl + space
+
+// var, dynamic
+
 void main() {
-  runApp(const MyApp());
+  runApp(HelloWorldApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class HelloWorldApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.amber,
+      debugShowCheckedModeBanner: true,
+      title: 'Hello World App',
+      home: Scaffold(
+        backgroundColor: Colors.yellow,
+        appBar: AppBar(
+          title: const Text('Home'),
+          centerTitle: true,
         ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.red,
-            foregroundColor: Colors.white,
+        body: const Center(
+          child: Text(
+            'Hello World we are writing our first application code with flutter',
+            textAlign: TextAlign.justify,
+            maxLines: 1,
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.red,
+              fontWeight: FontWeight.w400,
+              letterSpacing: 0.8,
+              height: 1.5,
+              // backgroundColor: Colors.black,
+              wordSpacing: 1,
+              // decoration: TextDecoration.lineThrough,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ),
-        inputDecorationTheme: const InputDecorationTheme(),
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Profile()),
-                );
-              },
-              child: const Text('Go to Profile'),
-            ),
-          ],
-        ),
       ),
     );
   }
 }
-
-class Profile extends StatelessWidget {
-  const Profile({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-      ),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Settings(),
-                  ),
-                );
-              },
-              child: const Text('Go to Settings'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Settings extends StatelessWidget {
-  const Settings({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Settings'),
-      ),
-      body: Column(
-        children: [
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('Home'),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
