@@ -3,23 +3,28 @@ import 'package:flutter/material.dart';
 // Drawer, NavigationBar, Bottom Navigation bar, SingleChildScrollView, ScrollBar, ListView, ListViewBuilder
 
 void main() {
-  runApp(HelloWorldApp());
+  runApp(MyApp());
 }
 
-class HelloWorldApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: true,
       title: 'Hello World App',
-      home: Home(),
+      home: HomeScreen(),
     );
   }
 }
 
-class Home extends StatelessWidget {
-  Home({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   List<String> friendList = [
     'Iram',
     'Shabbin',
