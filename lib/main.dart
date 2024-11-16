@@ -1,15 +1,14 @@
+import 'package:flutter/material.dart';
 
-import 'package:flutter/cupertino.dart';
+void main() {
+  runApp(MyApp());
+}
 
-class Settings extends StatelessWidget {
-  const Settings({super.key});
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Settings'),
-      ),
+    return MaterialApp(
+      home: Text('Hello World'),
     );
   }
 }
