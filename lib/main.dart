@@ -1,193 +1,62 @@
+
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+/// Cupertino Design System
+
 void main() {
-  runApp(const MyApp());
+  runApp(const CupertinoExpApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class CupertinoExpApp extends StatelessWidget {
+  const CupertinoExpApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.blue,
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.green,
-            foregroundColor: Colors.white,
-          ),
-        ),
-        inputDecorationTheme: const InputDecorationTheme(
-          border: OutlineInputBorder(
-              borderSide: BorderSide(
-            color: Colors.orange,
-          )),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.orange),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.orange),
-          ),
-        ),
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.amber, foregroundColor: Colors.black),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.red,
-            foregroundColor: Colors.white,
-          ),
-        ),
-        inputDecorationTheme: const InputDecorationTheme(
-          border: OutlineInputBorder(
-              borderSide: BorderSide(
-            color: Colors.pinkAccent,
-          )),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.pinkAccent),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.pinkAccent),
-          ),
-        ),
-      ),
-      home: const MyHomePage(),
-      themeMode: ThemeMode.system,
-    );
+    if (Platform.isIOS) {
+      return const CupertinoApp(
+        title: 'Experiment Project',
+        home: Home(),
+      );
+    } else {
+      return const MaterialApp(
+        home: Home(),
+      );
+    }
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+class Home extends StatelessWidget {
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-        centerTitle: true,
+    return CupertinoPageScaffold(
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text('Home'),
+        trailing: Icon(CupertinoIcons.arrow_up_doc),
+        leading: Icon(CupertinoIcons.arrow_up),
       ),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const TextField(
-              textDirection: TextDirection.ltr,
-
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            const TextField(),
-            const SizedBox(
-              height: 8,
-            ),
-            const TextField(),
-            const SizedBox(
-              height: 8,
-            ),
-            const TextField(),
-            const SizedBox(
-              height: 8,
-            ),
-            const TextField(),
-            const SizedBox(
-              height: 8,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Profile()),
-                );
-              },
-              child: const Text('Go to Profile'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Profile extends StatelessWidget {
-  const Profile({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-      ),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Settings(),
-                  ),
-                );
-              },
-              child: const Text('Go to Settings'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Settings extends StatelessWidget {
-  const Settings({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Settings'),
-      ),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const MyHomePage(),
-                    ),
-                    (predicate) => false);
-              },
-              child: const Text('Home'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Profile(),
-                  ),
-                );
-              },
-              child: const Text('Profile'),
-            ),
-          ],
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CupertinoButton.filled(
+            borderRadius: BorderRadius.circular(16),
+            child: const Text('Tap here'),
+            onPressed: () {},
+          ),
+          CupertinoListTile(
+            onTap: () {},
+            title: const Text('Title'),
+            backgroundColor: CupertinoColors.white,
+            subtitle: const Text('subtitle'),
+            trailing: const Icon(CupertinoIcons.airplane),
+          ),
+          const CupertinoTextField(),
+          CupertinoSwitch(value: false, onChanged: (value) {})
+        ],
       ),
     );
   }
