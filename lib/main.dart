@@ -1,85 +1,5 @@
-import 'package:flutter/material.dart';
 
-/// Named Navigation, Stateful Widget
-
-void main() {
-  runApp(const SimpleApp());
-}
-
-class SimpleApp extends StatelessWidget {
-  const SimpleApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      // initialRoute: '/',
-      // routes: {
-      //   '/': (context) => Home(),
-      //   '/profile': (context) => Profile(),
-      //   '/settings': (context) => Settings(),
-      // },
-      home: CounterScreen(),
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  const Home({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-      ),
-      body: Column(
-        children: [
-          ElevatedButton(
-            onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => Profile(),
-              //   ),
-              // );
-              Navigator.pushNamed(context, '/profile');
-            },
-            child: const Text('Go to Profile'),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class Profile extends StatelessWidget {
-  const Profile({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-      ),
-      body: Column(
-        children: [
-          ElevatedButton(
-            onPressed: () {
-              // Navigator.pushReplacement(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => Settings(),
-              //   ),
-              // );
-              Navigator.pushReplacementNamed(context, '/settings');
-            },
-            child: const Text('Settings'),
-          ),
-        ],
-      ),
-    );
-  }
-}
+import 'package:flutter/cupertino.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -167,3 +87,4 @@ class CounterScreenState extends State<CounterScreen> {
     );
   }
 }
+
