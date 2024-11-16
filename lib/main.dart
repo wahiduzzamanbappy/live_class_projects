@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-
 /// MediaQuery | Wrap | LayoutBuilder | OrientationBuilder
-
 void main() {
-  runApp(const SimpleApp());
+  runApp(MyApp());
 }
 
-class SimpleApp extends StatelessWidget {
-  const SimpleApp({super.key});
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return const MaterialApp(
       home: Home(),
     );
@@ -91,3 +88,4 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
