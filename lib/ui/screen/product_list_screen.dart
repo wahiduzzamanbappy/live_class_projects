@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:liveclass_project/ui/screen/add_new_product_screen.dart';
 import 'package:liveclass_project/ui/widgets/product_item.dart';
-import '../models/item.dart';
+import '../../models/product.dart';
 
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({super.key});
