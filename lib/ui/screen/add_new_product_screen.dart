@@ -1,5 +1,6 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:liveclass_project/ui/models/item.dart';
 
 class AddNewProductScreen extends StatefulWidget {
   const AddNewProductScreen({super.key});
@@ -18,6 +19,7 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
   final TextEditingController _quantityTEController = TextEditingController();
   final TextEditingController _totalPriceTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _addNewProductInProgress = false;
 
 
   @override
@@ -142,15 +144,7 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  Item item = Item(
-                    name: _nameTEController.text.trim(),
-                    code: _codeTEController.text.trim(),
-                    price: _priceTEController.text.trim(),
-                    image: _imageTEController.text.trim(),
-                    quantity: _quantityTEController.text.trim(),
-                    totalPrice: _totalPriceTEController.text.trim(),
-                  );
-                  Navigator.pop(context, item);
+                  _addNewProduct();
                 }
               },
               child: const Text('Add Product'),
@@ -158,6 +152,26 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  Future<void> _addNewProduct() async{
+    _addNewProductInProgress = true;
+    setState(() {});
+    Uri uri = Uri.parse('https://crud.teamrabbil.com/api/v1/CreateProduct');
+
+    Map<String, dynamic> requestBody = {
+      "Img" : _imageTEController.text.trim(),
+      "ProductCode" : _codeTEController.text.trim(),
+      "ProductName" : _nameTEController.text.trim(),
+      "Qty" : _quantityTEController.text.trim(),
+      "TotalPrice" : _totalPriceTEController.text.trim(),
+      "UnitPrice" : _priceTEController.text.trim(),
+    };
+    Response response = await post(
+      Uri,
+      header: {'Content-type: Application/json'},
+      body: jsonEncode(requestBody),
     );
   }
 }

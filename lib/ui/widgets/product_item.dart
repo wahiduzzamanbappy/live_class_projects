@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:liveclass_project/ui/screen/update_product_list.dart';
-import '../models/item.dart';
+import '../../models/product.dart';
 
 class ProductItem extends StatefulWidget {
   const ProductItem({
