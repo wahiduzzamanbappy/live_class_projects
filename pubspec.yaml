@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   device_preview: ^1.2.0
   http: ^1.2.2
+  colorful_circular_progress_indicator: ^0.0.2
+  draggable_fab: ^0.1.4
 
 dev_dependencies:
   flutter_test:
