@@ -18,4 +18,8 @@ class Product {
     required this.createdDate,
     required this.productName,
   });
+
+  void removeAt(index) {
+
+  }
 }
